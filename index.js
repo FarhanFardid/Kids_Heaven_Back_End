@@ -43,6 +43,8 @@ async function run() {
         const result = await toyCollection.find(query).toArray();
         res.send(result)
      })
+
+ 
      
  app.get('/toys', async(req,res)=>{
     const cursor = toyCollection.find()
