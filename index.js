@@ -65,11 +65,12 @@ async function run() {
   res.send(result)
  })
 
- app.put('/toys/:id', async(req,res)=> {
+//  app.put('/toys/:id', async(req,res)=> {
+ app.patch('/toys/:id', async(req,res)=> {
   const id = req.params.id;
   const upToy = req.body;
   const filter ={_id: new ObjectId(id)}
-  const options ={upsert:true};
+  // const options ={upsert:true};
   const updateToy ={
     $set:{
       toyName : upToy.toyName,
@@ -79,7 +80,8 @@ async function run() {
 
     }
   };
-  const result = await toyCollection.updateOne(filter,updateToy,options)
+  // const result = await toyCollection.updateOne(filter,updateToy,options)
+  const result = await toyCollection.updateOne(filter,updateToy)
   res.send(result);
  })
 
